@@ -6,6 +6,7 @@ class AddToDoForm extends Component {
           toDo: ''
       }
       this.handleInputChange = this.handleInputChange.bind(this);
+      this.addToDo = this.addToDo.bind(this);
   }
   handleInputChange(event){
       const target = event.target;
@@ -16,11 +17,20 @@ class AddToDoForm extends Component {
       })
       
   }
+  addToDo(event){
+      if(this.state.toDo.length) {
+        this.props.addToDo(this.state.ToDo);
+      } else{
+          alert("Please input to do!");
+      }
+      
+  }
+
   render() {
     return (
     <form>
-        <input type="text" name="toDo" value={this.state.toDo}/>
-        <input type="submit" value="Add"/>
+        <input type="text" name="toDo" value={this.state.toDo} onChange={this.handleInputChange}/>
+        <input type="submit" value="Add" onSubmit={this.addToDo}/>
     </form>
     );
   }
