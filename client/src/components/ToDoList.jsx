@@ -28,7 +28,7 @@ class ToDoList extends Component {
   render() {
     return (
       <div className='toDoList'>
-        <AddToDoForm />
+        <AddToDoForm addToDo = {this.addToDo}/>
       </div>
     );
   }

@@ -12,6 +12,7 @@ class AddToDoForm extends Component {
       this.addToDo = this.addToDo.bind(this);
       
   }
+  
   handleInputChange(event){
       const target = event.target;
       const value = target.value;
@@ -19,13 +20,16 @@ class AddToDoForm extends Component {
       this.setState( {
           [name]: value
       })
-      console.log('handle input change');
-      
+          
   }
+
   addToDo(event){
       event.preventDefault();
       if(this.state.toDo.length) {
-        this.props.addToDo(this.state.ToDo);
+        this.props.addToDo(this.state.toDo);
+        this.setState({
+            toDo: ''
+        })
       } else{
           alert("Please input to do!");
       }
