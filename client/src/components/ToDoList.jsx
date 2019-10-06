@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import AddToDoForm from './AddToDoForm.jsx';
+import ToDoListTable from './ToDoListTable.jsx';
+
 class ToDoList extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +31,7 @@ class ToDoList extends Component {
     return (
       <div className='toDoList'>
         <AddToDoForm addToDo = {this.addToDo}/>
+        <ToDoListTable list={this.state.list}/>
       </div>
     );
   }
