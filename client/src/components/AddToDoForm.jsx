@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 class AddToDoForm extends Component {
-  constructor() {
+  constructor(props) {
+      super(props);
+
       this.state ={
-          toDo: ''
+          toDo: '',
       }
+
       this.handleInputChange = this.handleInputChange.bind(this);
       this.addToDo = this.addToDo.bind(this);
+      
   }
   handleInputChange(event){
       const target = event.target;
@@ -15,9 +19,11 @@ class AddToDoForm extends Component {
       this.setState( {
           [name]: value
       })
+      console.log('handle input change');
       
   }
   addToDo(event){
+      event.preventDefault();
       if(this.state.toDo.length) {
         this.props.addToDo(this.state.ToDo);
       } else{
@@ -30,7 +36,7 @@ class AddToDoForm extends Component {
     return (
     <form>
         <input type="text" name="toDo" value={this.state.toDo} onChange={this.handleInputChange}/>
-        <input type="submit" value="Add" onSubmit={this.addToDo}/>
+        <input type="submit" value="Add" onClick={this.addToDo}/>
     </form>
     );
   }

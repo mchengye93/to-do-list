@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import AddToDoForm from './AddToDoForm.jsx';
 class ToDoList extends Component {
     constructor(props) {
         super(props);
@@ -8,6 +8,17 @@ class ToDoList extends Component {
            list: [],
         };
 
+        this.addToDo = this.addToDo.bind(this);
+
+    }
+
+    addToDo(toDoItem) {
+        let list = this.state.list;
+        list.push(toDoItem);
+        this.setState( {
+            list: list
+        })
+        console.log('New item added to list ', list );
     }
 
     componentDidMount() {
@@ -16,8 +27,8 @@ class ToDoList extends Component {
     
   render() {
     return (
-      <div class='toDoList'>
-        
+      <div className='toDoList'>
+        <AddToDoForm />
       </div>
     );
   }
